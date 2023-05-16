@@ -1,0 +1,11 @@
+enable_post_user_group_signature:
+  default: true
+  type: bool
+  description: "Display Post User Signature"
+
+post_user_group_signatures:
+  type: list
+  list_type: simple
+  default: "Software-AG-Professional-Services, Software AG Professional Services, https://www.softwareag.com/en_corporate/resources/services/professional-services.html, sag-signature-banner, https://www.softwareag.com/en_corporate/resources/services/fast-track-services.html"
+  description:
+    en: "While creating post user-signature will be added at the bottom if user belongs to specified group. \n Comma delimited parameters in this order: GroupName, LinkText, LinkHref, AssetBannerKey, BannerHref"

@@ -1,0 +1,10 @@
+{
+  "name": "techcommunity-post-signature",
+  "authors": "Webdirekt",
+  "about_url": "https://github.com/TECHcommunity-dev/techcommunity-post-signature/blob/main/README.md",
+  "license_url": "https://github.com/TECHcommunity-dev/techcommunity-post-signature/blob/main/LICENSE",
+  "component": true,
+  "assets": {
+    "sag-signature-banner": "assets/signature-banner.png"
+  }
+}
