@@ -5,6 +5,6 @@
   "license_url": "https://github.com/TECHcommunity-dev/techcommunity-post-signature/blob/main/LICENSE",
   "component": true,
   "assets": {
-    "sag-signature-banner": "assets/signature-banner.jpg"
+    "sag-signature-banner": "assets/signature-banner.png"
   }
 }
