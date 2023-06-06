@@ -66,7 +66,7 @@ export default {
                             .filter(Boolean)
                             .map((x) => x.trim());
 
-                        signature = `\n\n\n\n\n\n\n\n\n\n<div data-class="user-signature"><hr /><div data-class="user-signature-name">${this.currentUser.custom_fields.user_field_6} ${this.currentUser.custom_fields.user_field_7}</div><div data-class="user-signature-link">\n\n[${linkText}](${linkHref})</div><div data-class="user-signature-banner">\n\n[<img src="${settings.theme_uploads[assetBannerkey]}" />](${bannerHref})</div></div>`;
+                        signature = `\n\n\n\n\n\n\n\n\n\n<div data-class="user-signature"><br /><hr /><div data-class="user-signature-name">${this.currentUser.custom_fields.user_field_6} ${this.currentUser.custom_fields.user_field_7}</div><div data-class="user-signature-link">\n\n[${linkText}](${linkHref})</div><div data-class="user-signature-banner">\n\n[<img src="${settings.theme_uploads[assetBannerkey]}" />](${bannerHref})</div></div>`;
                         //Finally append the signature to the reply content
                         this.model.set("reply", reply.concat(signature));
                         this.model.set("originalText", reply.concat(signature));                        
