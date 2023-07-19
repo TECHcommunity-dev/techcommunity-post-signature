@@ -1,4 +1,5 @@
 import { withPluginApi } from "discourse/lib/plugin-api";
+import { cancel, scheduleOnce } from "@ember/runloop";
 
 export default {
     name: "techcommunity-post-signature",
@@ -69,8 +70,37 @@ export default {
                         signature = `\n\n\n\n\n\n\n\n\n\n<div data-class="user-signature"><br /><hr /><div data-class="user-signature-name">${this.currentUser.custom_fields.user_field_6} ${this.currentUser.custom_fields.user_field_7}</div><div data-class="user-signature-link">\n\n[${linkText}](${linkHref})</div><div data-class="user-signature-banner">\n\n[<img src="${settings.theme_uploads[assetBannerkey]}" />](${bannerHref})</div></div>`;
                         //Finally append the signature to the reply content
                         this.model.set("reply", reply.concat(signature));
-                        this.model.set("originalText", reply.concat(signature));                        
+                        this.model.set("originalText", reply.concat(signature));   
+                        
+                        // Binjan; 2023.07.18; Call focus composer method
+                        if (opts?.action === "reply" )
+                            // call focus method of the composer
+                            this.focusComposer();
                     }
+                },
+                
+                // Binjan; 2023.07.18; override _focusAndInsertText method to show cursor at 0,0 position 
+                async _focusAndInsertText() {           
+                    scheduleOnce("afterRender", () => {
+                        // find the element
+                        var elem = document.querySelector("textarea.d-editor-input");
+                        // if not found composer
+                        if (!elem)
+                            return;
+                        
+                        // set cursour position
+                        if (elem.setSelectionRange) { 
+                            elem.focus(); 
+                            elem.setSelectionRange(0, 0); 
+                        } else if (txtElement.createTextRange) { 
+                            var range = elem.createTextRange();  
+                            range.moveStart('character', 0); 
+                            range.select(); 
+                        } 
+
+                        // set top position of the control
+                        elem.scrollTo(0, 0);
+                    });
                 }
             });
         });
